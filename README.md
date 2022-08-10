@@ -1,2 +1,2 @@
-# TeshaVesha - Online thrifting website
-Coding Dojo Project &amp; Algorithms stack - Solo Project 
+# TeshaVesha - Online Thrifting Website
+Coding Dojo Projects &amp; Algorithms stack - Solo Project 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
-import promoPicture from './promopic.webp';
+import promoPicture from '../images/promopic.webp';
 
 const Register = ({ setIsLoggedin }) => {
   const navigate = useNavigate();

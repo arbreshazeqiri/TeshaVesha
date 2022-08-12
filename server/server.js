@@ -14,6 +14,7 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 require('./routes/product.routes')(app);
 require('./routes/user.routes')(app);
+
 app.post('/upload', (req, res) => {
     if (!req.files) {
         return res.status(500).send({ msg: "file is not found" })

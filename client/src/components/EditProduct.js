@@ -28,7 +28,7 @@ const EditProduct = () => {
         setReleaseYear(res.data.releaseYear);
       })
       .catch((err) => console.log('GET MOVIE BY ID ERROR', err));
-  }, []);
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

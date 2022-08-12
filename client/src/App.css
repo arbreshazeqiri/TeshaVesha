@@ -73,6 +73,7 @@
   vertical-align: middle;
   align-items: center;
   gap: 1em;
+  margin-top: 2.5em;
 }
 
 .register-form input {
@@ -94,5 +95,34 @@
 
 .promo-pic h2 {
   align-self: flex-start;
-  margin: 0.5em 0em;
+  margin: 0em 0em 0.5em;
+}
+
+.name {
+  display: flex;
+  gap: 10px;
+}
+
+.name input {
+  width: 145px;
+}
+
+.terms-checkbox {
+  display: flex;
+  vertical-align: middle;
+  text-align: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.terms-checkbox input {
+  height: 15px;
+}
+
+.country-section {
+  display: flex;
+  gap: 0.5em;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: space-between;
 }

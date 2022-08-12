@@ -1,68 +1,145 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
 
-  .search-icon {
-    position: relative;
-    margin-right: -25px;
-    padding: 0;
-    background-color: white;
-    border: none;
-  }
+.search-icon {
+  position: relative;
+  margin-right: -25px;
+  padding: 0;
+  background-color: white;
+  border: none;
+}
 
-  .header h1 {
-    margin: 0;
-    color:#C27BA0;
-  }
+.header h1 {
+  margin: 0;
+  color: #C27BA0;
+}
 
-  .search-container {
-    display: flex;
-    vertical-align: middle;
-    justify-content: center;
-    align-items: center;
-  }
+.search-container {
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+}
 
-  .header form {
-    width: 600px;
-  }
+.header form {
+  width: 600px;
+}
 
-  .header input {
-    background-color: white;
-    width: 500px;
-    height: 35px;
-    border-radius: 5px;
-    padding: 0px 30px;
-    font-size: 15px;
-    font-family: Helvetica;
-  }
+.header input {
+  background-color: white;
+  width: 500px;
+  height: 35px;
+  border-radius: 5px;
+  padding: 0px 30px;
+  font-size: 15px;
+  font-family: Helvetica;
+}
 
-  .icon {
-    position: relative;
-  }
-  
-  .nav-link {
-    text-decoration: none;
-    align-self: center;
-    color: white;
-  }
-  
-  .auth {
-    display: flex;
-    justify-content: flex-end;
-  }
+.icon {
+  position: relative;
+}
 
-  .auth-buttons {
-    display: flex;
-    width: 210px;
-    justify-content: space-between;
-  }
+.nav-link {
+  text-decoration: none;
+  align-self: center;
+  color: white;
+}
 
-  .wishlist-shoppingbag button{
-    background-color: white;
-    border: none;
-    height: 30px;
-  }
+.auth {
+  display: flex;
+}
+
+.wishlist-shoppingbag {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.wishlist-shoppingbag button:hover {
+  color: #C27BA0;
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.auth-icons {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.wishlist-icon,
+.shoppingbag-icon {
+  font-size: 1.2em;
+  text-decoration: none;
+  color: lightgray;
+  padding: 0.2em;
+}
+
+.wishlist-icon:hover,
+.shoppingbag-icon:hover, .sell-icon:hover {
+  font-size: 1.2em;
+  text-decoration: none;
+  color: #C27BA0;
+  padding: 0.2em;
+}
+
+.sell-icon,
+.user-icon {
+  font-size: 1.2em;
+  text-decoration: none;
+  color: lightgrey;
+  padding: 0.2em;
+}
+
+.user-icon {
+  background-color: white;
+  border: none;
+}
+
+.user-icon button {
+  background-color: white;
+  border: none;
+  color:#C27BA0;
+}
+
+.user-icon button:focus {
+  background-color: white;
+  border: none;
+  color:#C27BA0;
+}
+
+.user-icon button:hover {
+  background-color: white;
+  border: none;
+  color:#C27BA0;
+}
+
+.user-icon button:active {
+  background-color: white;
+  border: none;
+  color:#C27BA0;
+}
+
+.dropdown-menu.show {
+  --bs-dropdown-link-active-bg: transparent;
+  --bs-dropdown-link-active-color: #212529;
+  --bs-dropdown-link-hover-color: rgb(194, 123, 160);
+}
+
+.btn-primary {
+  --bs-btn-focus-shadow-rgb: transparent !important;
+}
+
+.btn {
+  --bs-btn-focus-box-shadow: none;
+}

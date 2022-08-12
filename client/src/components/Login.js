@@ -32,10 +32,10 @@ const Login = ({ setIsLoggedin }) => {
         <h2>Log in to Continue</h2>
             <input type="email" name="email" placeholder="Email" value={user.email} onChange={handleChange} required />
             <input type="text" name="password" placeholder="Password" value={user.password} onChange={handleChange} required />
-            <button id="styled-button-two" style={{width: "310px"}}>Login</button>
+            <button id="styled-button-two" style={{width: "300px"}}>Login</button>
         </form>
         <span>Don't have an account?</span>
-        <button id="styled-button-one" style={{width: "310px"}}><NavLink className="nav-link" to="/register">Sign up</NavLink></button>
+        <button id="styled-button-one" style={{width: "300px"}}><NavLink className="nav-link" to="/register">Sign up</NavLink></button>
     </div>
     );
 };

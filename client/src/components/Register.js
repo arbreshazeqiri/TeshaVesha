@@ -7,17 +7,22 @@ import promoPicture from './promopic.webp';
 const Register = ({ setIsLoggedin }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    username: '',
+    firstname: '',
+    lastname:'',
     email: '',
+    username: '',
     password: '',
     confirmPassword: '',
+    country: '',
   });
+
   const handleChange = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -29,15 +34,20 @@ const Register = ({ setIsLoggedin }) => {
       })
       .catch((err) => console.log(err));
   };
+
   return (
-    <div className="register-form">
+    <div className="register-form" style={{marginTop: '3em'}}>
       <div className="promo-pic">
         <h2>Get ready</h2>
-        <img src={promoPicture} style={{ height: "400px" }} alt="promo picture"></img>
+        <img src={promoPicture} style={{ height: "400px" }} alt="promo"></img>
       </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="username" placeholder="Username" value={user.username} onChange={handleChange} required />
+        <div className="name">
+          <input type="text" name="firstname" placeholder="First Name" value={user.firstname} onChange={handleChange} required />
+          <input type="text" name="lastname" placeholder="Last Name" value={user.lastname} onChange={handleChange} required />
+        </div>
         <input type="email" name="email" placeholder="Email" value={user.email} onChange={handleChange} required />
+        <input type="text" name="username" placeholder="Username" value={user.username} onChange={handleChange} required />
         <input type="text" name="password" placeholder="Password" value={user.password} onChange={handleChange} required />
         <input
           type="text"
@@ -47,7 +57,18 @@ const Register = ({ setIsLoggedin }) => {
           onChange={handleChange}
           required
         />
-        <button id="styled-button-one" style={{ width: "310px" }}>Register</button>
+        <div className="country-section">
+          <label style={{ margin: "0px" }}>Your location: </label>
+          <select value={user.country} name="country" onChange={handleChange} required>
+            <option value="Kosovo">Kosovo</option>
+            <option value="Albania">Albania</option>
+            <option value="North Macedonia">North Macedonia</option>
+          </select>
+        </div>
+        <span className="terms-checkbox">
+          <input type="checkbox" name="terms" placeholder="Terms and Conditions" style={{ width: "20px" }} />I agree to the<a href="/" style={{ padding: "0px 3px" }}>Terms of Use</a>and<a href="/" style={{ padding: "0px 3px" }}>Privacy Policy.</a>
+        </span>
+        <button id="styled-button-one" type="submit" name="register" style={{ width: "310px" }}>Register</button>
       </form>
     </div>
   );

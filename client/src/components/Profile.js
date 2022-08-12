@@ -13,7 +13,7 @@ const Profile = () => {
         setProductList(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [username]);
 
   return (
     <div>

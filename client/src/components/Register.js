@@ -13,7 +13,10 @@ const Register = ({ setIsLoggedin }) => {
     username: '',
     password: '',
     confirmPassword: '',
-    country: '',
+    country: 'Kosovo',
+    products: [],
+    wishlist: [],
+    shoppingbag: [],
   });
 
   const handleChange = (e) => {

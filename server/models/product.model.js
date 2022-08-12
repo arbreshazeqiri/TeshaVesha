@@ -4,51 +4,37 @@ const ProductSchema = mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, 'product title is required'],
-      maxlength: [40, 'The title length should be no more than 40 characters!!'],
+      required: [true, 'A product title is required.'],
+      maxlength: [40, 'Product title should be no more than 40 characters.'],
     },
-    genre: {
+    description: {
       type: String,
-      required: [true, 'A product genre is required!!'],
-      enum: [
-        'Comedy',
-        'Drama',
-        'Horror',
-        'Sci-Fi',
-        'Fantasy',
-        'Action',
-        'Family',
-        'Animated',
-        'Documentary',
-        'Romcom',
-        'Silent Product',
-        'Thriller',
-        'Crime Noir',
-        'French Cinema',
-      ],
+      required: [true, 'A product description is required.'],
+      maxlength: [200, 'Product description should be no more than 200 characters.']
     },
-    boxArt: {
+    location: {
       type: String,
-      required: [true, 'Product boxArt is required'],
+      required: [true, 'A product location is required.'],
     },
-    duration: {
+    category: {
       type: String,
-      default: 'N/A',
+      required: [true, 'A product category is required.'],
     },
-    rating: {
+    condition: {
       type: String,
-      required: [true, 'Product rating is required'],
-      enum: ['G', 'PG', 'PG-13', 'R', 'NC-17'],
+      required: [true, 'A product condition description is required.'],
     },
-    actors: { type: [String] },
-    isKidFriendly: {
-      type: Boolean,
-      default: false,
+    delivery: {
+      type: String,
+      required: [true, 'A product delivery method is required.'],
     },
-    releaseYear: {
+    price: {
       type: Number,
-      min: [1922, 'TOO OLD'],
+      min: [0, 'You cannot set a negative price for a product.'],
     },
+    imageArray: [{
+      type: String
+  }],
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

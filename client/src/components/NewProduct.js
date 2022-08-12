@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-const NewProduct = () => {
+const NewProduct = ({ isLoggedin, setIsLoggedin }) => {
+  const [user, setUser] = useState(null);
   const [title, setTitle] = useState('');
-  const [genre, setGenre] = useState('');
-  const [boxArt, setBoxArt] = useState('');
-  const [duration, setDuration] = useState('');
-  const [rating, setRating] = useState('');
-  const [actors, setActors] = useState('');
-  const [isKidFriendly, setIsKidFriendly] = useState(false);
-  const [releaseYear, setReleaseYear] = useState(0);
+  const [description, setDescription] = useState('');
+  const [location, setLocation] = useState('');
+  const [category, setCategory] = useState('');
+  const [condition, setCondition] = useState('');
+  const [delivery, setDelivery] = useState('');
+  const [price, setPrice] = useState(0);
+  // const [imageArray, setImageArray] = useState([]);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:8000/api/current-user', { withCredentials: true })
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [isLoggedin]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -19,19 +30,19 @@ const NewProduct = () => {
         'http://localhost:8000/api/products',
         {
           title,
-          genre,
-          boxArt,
-          duration,
-          rating,
-          actors: actors.split(','),
-          isKidFriendly,
-          releaseYear,
+          description,
+          location,
+          category,
+          condition,
+          delivery,
+          price,
+          // imageArray,
         },
         { withCredentials: true },
       )
       .then((res) => {
         console.log(res.data);
-        navigate('/');
+        navigate('/profile/' + user.username);
       })
       .catch((err) => setErrors(err.response.data.errors));
   };
@@ -44,60 +55,57 @@ const NewProduct = () => {
       <label>Title</label>
       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
       {errors.title && <span className="text-danger">{errors.title.message}</span>}
-      <label>Genre</label>
-      <select value={genre} name="genre" onChange={(e) => setGenre(e.target.value)}>
-        <option>Select a Genre</option>
-        <option value="Comedy">Comedy</option>
-        <option value="Drama">Drama</option>
-        <option value="Horror">Horror</option>
-        <option value="Sci-Fi">Sci-Fi</option>
-        <option value="Fantasy">Fantasy</option>
-        <option value="Action">Action</option>
-        <option value="Family">Family</option>
-        <option value="Animated">Animated</option>
-        <option value="Documentary">Documentary</option>
-        <option value="Romance">Romance</option>
-        <option value="Silent Product">Silent Product</option>
-        <option value="Thriller">Thriller</option>
-        <option value="Crime Noir">Crime Noir</option>
-        <option value="French Cinema">French Cinema</option>
+      <label>Description</label>
+      <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+      {errors.description && <span className="text-danger">{errors.description.message}</span>}
+      <label>Location</label>
+      <select value={location} name="location" onChange={(e) => setLocation(e.target.value)}>
+        <option>Select a Location</option>
+        <option value="Prishtinë">Prishtinë</option>
+        <option value="Mitrovicë">Mitrovicë</option>
+        <option value="Ferizaj">Ferizaj</option>
+        <option value="Pejë">Pejë</option>
+        <option value="Gjakovë">Gjakovë</option>
+        <option value="Gjilan">Gjilan</option>
+        <option value="Prizren">Prizren</option>
+        <option value="Tiranë">Tiranë</option>
+        <option value="Shkup">Shkup</option>
       </select>
-      {errors.genre && <span className="text-danger">{errors.genre.message}</span>}
-      <label>Box Art</label>
-      <input type="text" value={boxArt} onChange={(e) => setBoxArt(e.target.value)} />
-      {errors.boxArt && <span className="text-danger">{errors.boxArt.message}</span>}
-      <label>Duration</label>
-      <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
-      {errors.duration && <span className="text-danger">{errors.duration.message}</span>}
-      <label>Rating</label>
-      <select value={rating} name="rating" onChange={(e) => setRating(e.target.value)}>
-        <option>Select a Rating</option>
-        <option value="G">G</option>
-        <option value="PG">PG</option>
-        <option value="PG-13">PG-13</option>
-        <option value="R">R</option>
-        <option value="NC-17">NC-17</option>
+      {errors.location && <span className="text-danger">{errors.location.message}</span>}
+      <label>Category</label>
+      <select value={category} name="category" onChange={(e) => setCategory(e.target.value)}>
+        <option>Select a category</option>
+        <option value="tops">Tops</option>
+        <option value="bottoms">Bottoms</option>
+        <option value="skirts">Skirts</option>
+        <option value="jeans">Jeans</option>
+        <option value="bags">Bags</option>
+        <option value="glasses">Glasses</option>
+        <option value="jewellery">Jewellery</option>
+        <option value="shoes">Shoes</option>
+        <option value="heels">Heels</option>
+        <option value="sneakers">Sneakers</option>
       </select>
-      {errors.rating && <span className="text-danger">{errors.rating.message}</span>}
-      <label>Actors</label>
-      <input
-        type="text"
-        value={actors}
-        placeholder="enter actors with commas"
-        onChange={(e) => setActors(e.target.value)}
-      />
-      {errors.actors && <span className="text-danger">{errors.actors.message}</span>}
-      <label> Kid Friendly</label>
-      <input
-        type="checkbox"
-        checked={isKidFriendly}
-        onChange={(e) => setIsKidFriendly(e.target.checked)}
-      />
-      {errors.isKidFriendly && <span className="text-danger">{errors.isKidFriendly.message}</span>}
-      <label> Release Year</label>
-      <input type="number" value={releaseYear} onChange={(e) => setReleaseYear(e.target.value)} />
-      {errors.releaseYear && <span className="text-danger">{errors.releaseYear.message}</span>}
-      <button>Add Product</button>
+      {errors.category && <span className="text-danger">{errors.category.message}</span>}
+      <label>Condition</label>
+      <select value={condition} name="condition" onChange={(e) => setCondition(e.target.value)}>
+        <option>Select product condition description</option>
+        <option value="new">New</option>
+        <option value="used">Used</option>
+        <option value="fairly used">Fairly used</option>
+      </select>
+      {errors.condition && <span className="text-danger">{errors.condition.message}</span>}
+      <label>Delivery</label>
+      <select value={delivery} name="delivery" onChange={(e) => setDelivery(e.target.value)}>
+        <option>Select delivery method</option>
+        <option value="my own shipping">My own Shipping</option>
+        <option value="pick up">Pick up</option>
+      </select>
+      {errors.delivery && <span className="text-danger">{errors.delivery.message}</span>}
+      <label>Price</label>
+      <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
+      {errors.price && <span className="text-danger">{errors.price.message}</span>}
+      <button id="styled-button-one">List item</button>
     </form>
   );
 };

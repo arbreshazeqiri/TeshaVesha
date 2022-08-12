@@ -17,7 +17,6 @@ module.exports = {
   getProductsByUser: (req, res) => {
     console.log('IS THIS WORKING', req.params.username);
     User.findOne({ username: req.params.username }).then((user) => {
-      console.log('USERID', user._id);
       Product.find({ createdBy: user._id })
         .populate('createdBy', 'username email')
         .then((products) => {

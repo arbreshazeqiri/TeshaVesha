@@ -1,31 +1,44 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const Product = require('./product.model');
 
 const UserSchema = mongoose.Schema(
   {
     firstname: {
       type: String,
-      required: [true, 'firstname is required'],
+      required: [true, 'First name is required'],
     }, 
     lastname: {
       type: String,
-      required: [true, 'lastname is required'],
+      required: [true, 'Last name is required'],
     },
     username: {
       type: String,
-      required: [true, 'username is required'],
+      required: [true, 'Username is required'],
     },
     email: {
       type: String,
-      required: [true, 'email is required'],
+      required: [true, 'Email is required'],
     },
     password: {
       type: String,
-      required: [true, 'password is required'],
+      required: [true, 'Password is required'],
     },
     country: {
       type: String,
-      required: [true, 'country is required'],
+      required: [true, 'Country is required'],
+    },
+    products: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Product',
+    },
+    whishlist: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Product',
+    },
+    shoppingbag: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Product',
     }
   },
   { timestamps: true },

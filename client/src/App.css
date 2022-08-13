@@ -126,3 +126,22 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.upload__image-wrapper img{
+  height: 200px;
+}
+
+.upload__image-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.row2 {
+  display: flex;
+}
+
+.mainbtndiv {
+  display: flex;
+
+}

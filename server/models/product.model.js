@@ -32,19 +32,9 @@ const ProductSchema = mongoose.Schema(
       type: String,
       required: [true, 'A product price is required.'],
     },
-    nameOne: {
+    names: [{
       type: String,
-      required: [true, 'At least one product image is required.'],
-    },
-    nameTwo: {
-      type: String,
-    },
-    nameThree: {
-      type: String,
-    },
-    nameFour: {
-      type: String,
-    },
+    }],
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

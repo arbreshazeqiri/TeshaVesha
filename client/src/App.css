@@ -54,7 +54,7 @@
 }
 
 .register-form {
-  background-color: lightgray;
+  background-color: rgb(231, 228, 228);
   padding: 2em;
   height: 500px;
   width: 900px;
@@ -127,21 +127,101 @@
   justify-content: space-between;
 }
 
-.upload__image-wrapper img{
-  height: 200px;
+.app-wrapper {
+  display: flex;
+  margin: 0em 20em;
+  padding: 0em 2em;
+  justify-content: center;
+  vertical-align: middle;
+  background-color: rgba(211, 211, 211, 0.408);
+  height: 600px;
+  width: 900px;
+  gap: 1em;
+}
+
+.uploaded-images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.row2 {
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  width: 450px;
+  min-height: 500px;
+  margin-top: -0.8em;
+  padding: 1em;
+  flex-wrap: wrap;
+  gap: 1em;
+  background-color: white;
+}
+
+.row2 img {
+  height: 180px;
+}
+
+.image-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  max-height: 240px;
+}
+
+.image-item__btn-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 .upload__image-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
   gap: 1em;
-}
-
-.row2 {
-  display: flex;
+  padding-top: 0.5em;
 }
 
 .mainbtndiv {
   display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
 
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  height: 600px;
+}
+
+.form-wrapper form {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: left;
+  height: 630px;
+}
+
+.form-wrapper button {
+  align-self: flex-end;
+  border-radius: 6px;
+}
+
+.form-wrapper label {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.form-wrapper input,
+textarea {
+  width: 300px;
+}
+
+.text-danger {
+  margin: 0;
 }

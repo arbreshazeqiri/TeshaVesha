@@ -15,15 +15,14 @@ const NewProduct = ({ isLoggedin, setIsLoggedin }) => {
   const [delivery, setDelivery] = useState('');
   const [price, setPrice] = useState('');
   const [names, setNames] = useState([]);
-  const [nameOne, setNameOne] = useState('');
+  const [nameOne, setNameOne] = useState(null);
   const [nameTwo, setNameTwo] = useState('');
   const [nameThree, setNameThree] = useState('');
   const [nameFour, setNameFour] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   let [images, setImages] = useState([]);
-  const maxNumber = 4;
-  const fd = new FormData();
+  const maxNumber = 5;
 
   const onChange = (imageList, addUpdateIndex) => {
     setImages(imageList);
@@ -40,36 +39,36 @@ const NewProduct = ({ isLoggedin, setIsLoggedin }) => {
 
   const fillImgPaths = () => {
     for (var a = 0; a < images.length; a++) {
+      const fd = new FormData();
       fd.append('image', images[a]['file']);
       names.push(images[a]['file']['name']);
-    }
-    console.log(names);
-    if (images.length === 1) {
-      setNameOne(names[0].toString());
-    }
-    if (images.length === 2) {
-      setNameOne(names[0].toString());
-      setNameTwo(names[1].toString());
-    }
-    if (images.length === 3) {
-      console.log(names[0]);
-      setNameTwo(names[1].toString());
-      console.log(nameTwo);
-      setNameThree(names[2].toString());
-      console.log(nameThree);
-    }
-    if (images.length === 4) {
-      setNameOne(names[0].toString());
-      setNameTwo(names[1].toString());
-      setNameThree(names[2].toString());
-      setNameFour(names[3].toString());
+      axios.post('http://localhost:8000/upload', fd
+      ).then(res => {
+        console.log("Image path(s) set successfully");
+      });
     }
   }
+
+  const uploadImages = () => {
+    for (var a = 0; a < images.length; a++) {
+      const fd = new FormData();
+      fd.append('image', images[a]['file']);
+      axios.post('http://localhost:8000/upload', fd
+      ).then(res => {
+        console.log("Images uploaded successfully");
+      });
+    }
+  }
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     fillImgPaths();
-    console.log(nameOne);
+    setNameOne(names[0]);
+    setNameTwo(names[1]);
+    setNameThree(names[2]);
+    setNameFour(names[3]);
     axios
       .post(
         'http://localhost:8000/api/products',
@@ -84,21 +83,15 @@ const NewProduct = ({ isLoggedin, setIsLoggedin }) => {
           nameOne,
           nameTwo,
           nameThree,
-          nameFour
+          nameFour,
         },
         { withCredentials: true },
       )
       .then((res) => {
-        console.log(res.data);
-        axios.post('http://localhost:8000/upload', fd
-        ).then(res => {
-        })
+        uploadImages();
         navigate('/profile/' + user.username);
       })
-      .catch((err) => {
-        setErrors(err.response.data.errors);
-        console.log(err.response.data.errors);
-      });
+      .catch((err) => setErrors(err.response.data.errors));
   };
 
   return (
@@ -144,11 +137,12 @@ const NewProduct = ({ isLoggedin, setIsLoggedin }) => {
                   </div>
                 ))}
               </div>
+              {!nameOne? <span className="text-danger">{'At least one product image is required.'}</span> : null}
             </div>
           )}
         </ImageUploading>
-        {errors.nameOne && <span className="text-danger">{errors.nameOne.message}</span>}
       </div>
+      {/* <button className="btn btn-primary" onClick={() => uploadimages()}>Submit Images</button> */}
       <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} onSubmit={handleSubmit}>
         <label>Title</label>
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -203,7 +197,7 @@ const NewProduct = ({ isLoggedin, setIsLoggedin }) => {
         <label>Price</label>
         <input type="number" value={price} onChange={(e) => setPrice(e.target.value.toString())} />
         {errors.price && <span className="text-danger">{errors.price.message}</span>}
-        <button id="styled-button-one" style={{ width: "300px", margin: "20px" }}>Submit</button>
+        <button>Submit</button>
       </form>
     </div>
   );

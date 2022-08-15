@@ -71,5 +71,5 @@ module.exports = {
   register,
   login,
   logout,
-  getLoggedInUser,
+  getLoggedInUser
 };

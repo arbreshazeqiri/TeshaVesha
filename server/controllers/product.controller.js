@@ -21,7 +21,7 @@ module.exports = {
         .populate('createdBy', 'username email')
         .then((products) => {
           console.log('MOVIESSS'.products);
-          res.json(products);
+          res.json([products, user]);
         })
         .catch((err) => {
           console.log('ERROR IN Get all', err);

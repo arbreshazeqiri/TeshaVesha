@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #styled-button-one {
@@ -238,4 +241,50 @@ textarea {
   display: flex;
   justify-content: center;
   gap: 1em;
+}
+
+.even-more-profile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-left: 9em;
+  text-align: left;
+  margin: 0em 7.5em;
+}
+
+
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 10px;
+  width: 1100px;
+}
+
+.profile-card {
+  box-shadow: 0px 5px 15px rgba(140, 140, 140, 0.5);
+  background-color: transparent;
+  width: 250px;
+}
+
+.profile-card img {
+  width: 100%;
+}
+
+.profile-info {
+  display: flex;
+  gap: 0.5em;
+  justify-content: left;
+  margin-left: 1em;
+}
+
+.profile-pic {
+  font-size: 150px;
+}
+
+.profile-user-info{
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+  justify-content: center;
 }

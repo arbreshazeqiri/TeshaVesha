@@ -1,19 +1,33 @@
 .even-more-container {
-display: flex;
-flex-direction: column;
-gap: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-left: 3.2em;
 }
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    gap: 20px;
-  }
-  
-  .card {
-    width: 300px;
-    box-shadow: 0px 5px 15px rgba(140, 140, 140, 0.5);
-    padding: 20px;
-    background-color: #eee;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 10px;
+}
+
+.card {
+  box-shadow: 0px 5px 15px rgba(140, 140, 140, 0.5);
+  background-color: transparent;
+  width: 200px;
+}
+
+.card img {
+  width: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+}
+
+.banner-button{
+  position: absolute;
+  top: 22em;
+  left: 4em;
+}

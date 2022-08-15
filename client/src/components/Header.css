@@ -4,6 +4,7 @@
   background-color: white;
   padding: 1rem;
   margin-bottom: 1rem;
+  border-bottom: 1px solid lightgray;
 }
 
 .search-icon {
@@ -86,7 +87,8 @@
 }
 
 .wishlist-icon:hover,
-.shoppingbag-icon:hover, .sell-icon:hover {
+.shoppingbag-icon:hover,
+.sell-icon:hover {
   font-size: 1.2em;
   text-decoration: none;
   color: #C27BA0;
@@ -109,25 +111,25 @@
 .user-icon button {
   background-color: white;
   border: none;
-  color:#C27BA0;
+  color: #C27BA0;
 }
 
 .user-icon button:focus {
   background-color: white;
   border: none;
-  color:#C27BA0;
+  color: #C27BA0;
 }
 
 .user-icon button:hover {
   background-color: white;
   border: none;
-  color:#C27BA0;
+  color: #C27BA0;
 }
 
 .user-icon button:active {
   background-color: white;
   border: none;
-  color:#C27BA0;
+  color: #C27BA0;
 }
 
 .dropdown-menu.show {
@@ -142,4 +144,24 @@
 
 .btn {
   --bs-btn-focus-box-shadow: none;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+  padding-left: 20px;
+  margin-top: -5px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgray;
+  font-size: 16px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: black;
+}
+
+.menu-item:hover {
+  color: rgb(194, 123, 160);
 }

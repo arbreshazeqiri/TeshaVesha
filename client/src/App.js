@@ -9,11 +9,12 @@ import EditProduct from './components/EditProduct';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
+import Footer from './components/Footer';
 function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App" style={{minHeight: "100vh"}}>
         <Header isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} />
         <Routes>
           <Route path="/" element={<ProductList />} />
@@ -24,6 +25,7 @@ function App() {
           <Route path="/register" element={<Register setIsLoggedin={setIsLoggedin} />} />
           <Route path="/profile/:username" element={<Profile />} />
         </Routes>
+      <Footer />
       </div>
     </BrowserRouter>
   );

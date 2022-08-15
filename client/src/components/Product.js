@@ -34,12 +34,20 @@ const Product = ({ isLoggedin, setIsLoggedin }) => {
   }, [id, isLoggedin]);
 
   const deleteProduct = (productId) => {
-    axios
-      .delete(`http://localhost:8000/api/products/${id}`)
-      .then((res) => {
-        navigate('/');
-      })
-      .catch((err) => console.log(err));
+      for (var a = 0; a < product.names.length; a++) {
+        console.log(product.names[a]);
+        let name = product.names[a];
+        axios.delete(`http://localhost:8000/delete/${name}`)
+        .then(res => {
+          console.log("Images deleted successfully");
+          axios
+          .delete(`http://localhost:8000/api/products/${id}`)
+          .then((res) => {
+            navigate('/');
+          })
+          .catch((err) => console.log(err));
+        });
+      }
   };
 
   const addToWishlist = (productId) => {

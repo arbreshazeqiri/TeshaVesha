@@ -67,9 +67,21 @@ const getLoggedInUser = async (req, res) => {
   }
 };
 
+const getUsers= async (req, res) => {
+    User.find({})
+      .then((users) => {
+        res.json(users);
+      })
+      .catch((err) => {
+        console.log('ERROR IN Get all', err);
+        res.status(400).json({ message: 'something went wrong in find all users', error: err });
+      });
+};
+
 module.exports = {
   register,
   login,
   logout,
-  getLoggedInUser
+  getLoggedInUser,
+  getUsers,
 };

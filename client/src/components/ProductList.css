@@ -1,15 +1,16 @@
 .even-more-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1em;
-  padding-left: 3.2em;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  gap: 10px;
+  gap: 19px;
 }
 
 .card {
@@ -26,8 +27,46 @@
   width: 100%;
 }
 
+.banner {
+  width:100%;
+}
+
 .banner-button{
   position: absolute;
-  top: 22em;
+  top: 26em;
   left: 4em;
+}
+
+.users-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 100px;
+  width: 1250px;
+}
+
+.user-card a{
+  text-decoration: none;
+  color: black;
+}
+
+.user-card a:hover{
+  text-decoration: none;
+  color: black;
+}
+
+.user-card-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-card-details span {
+  font-size: 20px;
+  color: #C27BA0;
+}
+
+.pre-footer{
+  color: #C27BA0;
+  margin-top: 2em;
 }

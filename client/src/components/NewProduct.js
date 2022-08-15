@@ -80,7 +80,7 @@ const NewProduct = ({ isLoggedin, setIsLoggedin }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", marginTop: "0em" }}>
-      <h4 style={{ margin: "0", marginRight: "26em", marginBottom: "0.5em" }}>LIST ITEM FOR SALE</h4>
+      <h4 style={{ margin: "0", marginTop: "2em", marginRight: "26em", marginBottom: "0.5em" }}>LIST ITEM FOR SALE</h4>
       <div className="app-wrapper">
         <div className="uploaded-images">
           <ImageUploading

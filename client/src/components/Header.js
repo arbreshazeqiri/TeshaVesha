@@ -50,8 +50,8 @@ const Header = ({ isLoggedin, setIsLoggedin }) => {
                 </div>
                 <div className="auth" style={{ display: "flex", justifyContent: "space-between" }}>
                     <div className="wishlist-shoppingbag">
-                        <Link className="wishlist-icon" to="/new"><FaRegHeart /> WISHLIST</Link>
-                        <Link className="shoppingbag-icon" to="/new"><FaShoppingBag /> SHOPPING BAG</Link>
+                        <Link className="wishlist-icon" to="/wishlist"><FaRegHeart /> WISHLIST</Link>
+                        <Link className="shoppingbag-icon" to="/shoppingbag"><FaShoppingBag /> SHOPPING BAG</Link>
                     </div>
                     {user ? (
                         <div className="auth-icons">

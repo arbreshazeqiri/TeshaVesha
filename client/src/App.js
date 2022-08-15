@@ -10,6 +10,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Footer from './components/Footer';
+import Wishlist from './components/Wishlist';
+import Shoppingbag from './components/Shoppingbag';
 function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/login" element={<Login setIsLoggedin={setIsLoggedin} />} />
           <Route path="/register" element={<Register setIsLoggedin={setIsLoggedin} />} />
           <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/wishlist" element={<Wishlist setIsLoggedin={setIsLoggedin}/>} />
+          <Route path="/shoppingbag" element={<Shoppingbag setIsLoggedin={setIsLoggedin}/>} />
         </Routes>
       <Footer />
       </div>

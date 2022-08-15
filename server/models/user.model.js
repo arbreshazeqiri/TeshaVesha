@@ -28,17 +28,11 @@ const UserSchema = mongoose.Schema(
       type: String,
       required: [true, 'Country is required'],
     },
-    products: {
-      type: [mongoose.Schema.Types.ObjectId],
-      ref: 'Product',
-    },
     whishlist: {
-      type: [mongoose.Schema.Types.ObjectId],
-      ref: 'Product',
+      type: [String],
     },
     shoppingbag: {
-      type: [mongoose.Schema.Types.ObjectId],
-      ref: 'Product',
+      type: [String],
     }
   },
   { timestamps: true },

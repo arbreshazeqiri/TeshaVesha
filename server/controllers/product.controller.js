@@ -63,7 +63,7 @@ module.exports = {
       })
       .catch((err) => {
         console.log('ERROR IN update Product', err);
-        res.status(400).json({ message: 'something went wrong in update product', error: err });
+        res.status(400).json({ message: 'something went wrong in update product', errors: err.errors });
       });
   },
   deleteProduct: (req, res) => {

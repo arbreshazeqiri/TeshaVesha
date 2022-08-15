@@ -34,20 +34,20 @@ const Product = ({ isLoggedin, setIsLoggedin }) => {
   }, [id, isLoggedin]);
 
   const deleteProduct = (productId) => {
-      for (var a = 0; a < product.names.length; a++) {
-        console.log(product.names[a]);
-        let name = product.names[a];
-        axios.delete(`http://localhost:8000/delete/${name}`)
+    for (var a = 0; a < product.names.length; a++) {
+      console.log(product.names[a]);
+      let name = product.names[a];
+      axios.delete(`http://localhost:8000/delete/${name}`)
         .then(res => {
           console.log("Images deleted successfully");
           axios
-          .delete(`http://localhost:8000/api/products/${id}`)
-          .then((res) => {
-            navigate('/');
-          })
-          .catch((err) => console.log(err));
+            .delete(`http://localhost:8000/api/products/${id}`)
+            .then((res) => {
+              navigate('/');
+            })
+            .catch((err) => console.log(err));
         });
-      }
+    }
   };
 
   const addToWishlist = (productId) => {
@@ -76,23 +76,40 @@ const Product = ({ isLoggedin, setIsLoggedin }) => {
             }
           </Carousel>
         </div>
-        <div className="form-wrapper">
+        <div className="form-wrapper" style={{display: "flex", flexDirection: "column", gap: "0.5em"}}>
           <h2>{product.title}</h2>
+          <h3 style={{color: "#C27BA0"}}>{product.price}€</h3>
           <p>{product.description}</p>
+          <table style={{textAlign: "left"}}>
+            <tr>
+            <td>Category:</td>
+              <td>{product.category}</td>
+            </tr>
+            <tr>
+              <td>Location:</td>
+              <td>{product.location}</td>
+            </tr>
+            <tr>
+              <td>Condition:</td>
+              <td>{product.condition}</td>
+            </tr>
+            <tr>
+              <td>Delivery method:</td>
+              <td>{product.delivery}</td>
+            </tr>
+          </table>
           {console.log(creator, user)}
-          <div className="details-buttons">
-            {creator === userId ? (
-              <div>
-                <button id="styled-button-one"><Link to={`/product/edit/${product._id}`} style={{ textDecoration: "none", color: "white" }}>Edit</Link></button>
-                <button id="styled-button-two" onClick={deleteProduct}>Delete</button>
-              </div>
-            ) : (
-              <div>
-                <button id="styled-button-one" onClick={addToWishlist}><FaRegHeart /></button>
-                <button id="styled-button-two" onClick={addToShoppingBag}><FaShoppingBag /></button>
-              </div>
-            )}
-          </div>
+          {creator === userId ? (
+            <div className="details-buttons">
+              <button id="styled-button-one"><Link to={`/product/edit/${product._id}`} style={{ textDecoration: "none", color: "white" }}>Edit</Link></button>
+              <button id="styled-button-two" onClick={deleteProduct}>Delete</button>
+            </div>
+          ) : (
+            <div className="details-buttons">
+              <button id="styled-button-one" onClick={addToWishlist}><FaRegHeart /></button>
+              <button id="styled-button-two" onClick={addToShoppingBag}><FaShoppingBag /></button>
+            </div>
+          )}
         </div>
       </div>
     </div>

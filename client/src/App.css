@@ -225,3 +225,16 @@ textarea {
 .text-danger {
   margin: 0;
 }
+
+.slides img {
+  width: 400px;
+}
+
+.slides {
+  width: 450px;
+}
+
+.details-buttons {
+  display: flex;
+  gap: 1em;
+}

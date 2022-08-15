@@ -13,31 +13,18 @@ const ProductList = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  const deleteProduct = (productId) => {
-    axios
-      .delete(`http://localhost:8000/api/products/${productId}`)
-      .then((res) => {
-        const newProducts = products.filter((product) => product._id !== productId);
-        setProducts(newProducts);
-      })
-      .catch((err) => console.log(err));
-  };
+
   return (
     <div className="container">
       {products.map((product) => (
         <div key={product._id} className="card">
+          <span style={{ textAlign: 'left' }}>{product.category.toUpperCase()}</span>
           <h2>{product.title}</h2>
-          <Link to={`/profile/${product.createdBy.username}`}>{product.createdBy.username}</Link>
-          <br />
-          <img src={product.boxArt} alt={product.title} />
-          <br />
-          <Link to={`/product/${product._id}`}>Details</Link>
-          <span> | </span>
-          <Link to={`/product/edit/${product._id}`}>Edit</Link>
-          <br />
-          <button style={{ marginTop: '1rem' }} onClick={() => deleteProduct(product._id)}>
-            Delete
-          </button>
+          <span>Posted by: <Link to={`/profile/${product.createdBy.username}`} style={{ color: '#C27BA0', textDecoration: 'none', fontWeight: "bold" }}>{product.createdBy.username}</Link></span>
+          <img src={require(`../../../server/public/${product.names[0]}`)} alt={product.title} />
+          <Link to={`/product/${product._id}`}>
+            Details
+          </Link>
         </div>
       ))}
     </div>
